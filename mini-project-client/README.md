@@ -34,4 +34,4 @@ Currently, two official plugins are available:
 
 # 3. Run the Client 
 
-  npm run dev
+ - npm run dev
