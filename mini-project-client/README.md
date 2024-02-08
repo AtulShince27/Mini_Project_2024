@@ -34,4 +34,7 @@ Currently, two official plugins are available:
 
 # 3. Run the Client 
 
- - npm run dev
+ - Change into client directory:
+      cd mini-project-client
+ - Run the client:
+       npm run dev
