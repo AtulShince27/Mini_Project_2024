@@ -108,3 +108,44 @@ Currently, two official plugins are available:
 
 - Create a pull request and add a reviewer who can review all the changes and merge the pull request with the origin/master branch of the project.
 
+## Font Family and Styling Guide: 
+
+# Login and SignIn Page:
+> ```shell
+> # Font Family
+> font-family: 'IBM Plex Mono', monospace;
+> # Heading
+> font-size : 32px;
+> font-weight: semibold
+> # paragraph and input elements
+> font-size : 16px;
+> font-weight: regular;
+> # Input when active:
+> border-color: #55E5B4;
+> # Input :
+> border-color : #8E8E93
+> # Button
+> background-color: #60BB58;
+> # Wrong Input and Forgot Password:
+>  # Forgot password
+>   color : #FF4448;
+>  # Input
+>   color : #FF4448;
+> ```
+
+
+# Home and Groups Page:
+> ```shell
+> # Font Family
+> font-family: 'IBM Plex Mono', monospace;
+> # Heading
+> font-size : 48px;
+> font-weight: bold
+> # paragraph elements 
+> font-size : 16px;
+> font-weight: regular;
+> # Document Colors:
+> paragraph : #000000, #6DECB5
+> Heading : #000000
+> background colors: #FFFFFF, #276261, #1D3D3F
+> ```
