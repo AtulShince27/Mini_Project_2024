@@ -131,6 +131,9 @@ Currently, two official plugins are available:
 >   color : #FF4448;
 >  # Input
 >   color : #FF4448;
+>  # Document Colors :
+>  background-color: #D9D9D9, #F8F0E2
+>  login div border color : #235353
 > ```
 
 
