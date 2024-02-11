@@ -1,13 +1,17 @@
 import { useState } from 'react'
-import LandingPage from '../pages/LandingPage'
-import '../styles/App.scss';
+
+
+
+import Navbar from './Navbar'
+import HomePage from '../pages/HomePage'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
-        
+    <div className='app'>
+        <Navbar />
+        <HomePage />
     </div>
   )
 }
