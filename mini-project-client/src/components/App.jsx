@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import '../styles/App.scss'
+
+
+
 import Navbar from './Navbar'
 import HomePage from '../pages/HomePage'
 

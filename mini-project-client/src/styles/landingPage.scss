@@ -1,0 +1,69 @@
+// Landing Page CSS
+
+.landing-page{
+    width: 100%;
+    height: 100vh;
+    background-color: #F7F6F8;
+    overflow: hidden;
+}
+.first-page{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 15% 85%;
+    background: linear-gradient(to bottom right, #181D26, #399893, #54D9C5);
+    z-index: -2;
+}
+#contentDiv{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
+    #textBubble3{
+        position: absolute;
+        margin-left: 35rem;
+        margin-top: 20.5rem;
+    }
+    #textContentDiv{
+        h1{
+            font-size: 40px;
+            font-weight: 600;
+            color: white;
+        }
+        #SignUpBtn{
+            font-size: 20px;
+            font-weight: 500;
+            border: 1px solid #1B3539;
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin-top: 2rem;
+            background-color: #D3FD3B;
+            color: #1B3539;
+        }
+        #SignUpBtn:hover{
+            border: 1px solid #D3FD3B;
+            color: #D3FD3B;
+            background-color: transparent;
+        }
+    }
+    #heroImage{
+        .text-bubble{
+            position: absolute;
+        }
+        #botImg{
+            margin-top: 20rem;
+            margin-left: 10rem;
+            z-index: 2;
+        }
+        #textBubble1{
+            margin-left: 10rem;
+        }
+        #textBubble2{
+            margin-left: 3rem;
+            margin-top: 10rem;
+        }
+        #textBubble4{
+            margin-top: 32.5rem;
+        }
+    }
+}
