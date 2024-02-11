@@ -1,10 +1,10 @@
 import React from 'react'
-import "./landingPage.scss";
-import botImg from "../assets/landing_page_bot.png"
-import textBubbleImg1 from "../assets/Text_Bubble1.png";
-import textBubbleImg2 from "../assets/Text_Bubble2.png";
-import textBubbleImg3 from "../assets/Text_Bubble3.png";
-import textBubbleImg4 from "../assets/Text_Bubble4.png";
+import "../styles/landingPage.scss";
+import botImg from "../assets/icons/landing_page_bot.png"
+import textBubbleImg1 from "../assets/icons/Text_Bubble1.png";
+import textBubbleImg2 from "../assets/icons/Text_Bubble2.png";
+import textBubbleImg3 from "../assets/icons/Text_Bubble3.png";
+import textBubbleImg4 from "../assets/icons/Text_Bubble4.png";
 const LandingPage = () => {
   return (
     <div className='landing-page'>

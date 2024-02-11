@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import LandingPage from './pages/LandingPage'
-import './App.scss'
+import LandingPage from '../pages/LandingPage'
+import '../styles/App.scss';
 
 function App() {
   const [count, setCount] = useState(0)
