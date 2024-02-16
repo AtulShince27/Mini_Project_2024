@@ -108,6 +108,21 @@ Currently, two official plugins are available:
 
 - Create a pull request and add a reviewer who can review all the changes and merge the pull request with the origin/master branch of the project.
 
+# 6. Git Stash and When to use git stash: 
+
+- The git stash is a way for you to save your current progress on whatever branch it is that you're currently working on. Use this command when you're trying to checkout and shift to another branch to work on something else. Git stash stores all your progress in a way that you can use this progress to push and merge with the original branch later.
+
+> ```shell
+> # Stashing changes:
+> git status
+> git stash
+> # Checking out to another branch after stashing
+> git checkout <branchName>
+> # Bringing back the stashed changes back:
+> git stash pop
+> # You can now commit and push your changes!
+> ```  
+
 ## Font Family and Styling Guide: 
 
 # Login and SignIn Page:
