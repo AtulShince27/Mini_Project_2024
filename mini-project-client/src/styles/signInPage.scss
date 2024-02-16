@@ -1,0 +1,63 @@
+.sign-in-page{
+    background-color: #F8F0E2;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'IBM Plex Mono', monospace;
+}
+.content-container{
+    width: 70%;
+    height: 70vh;
+    background-color: white;
+    margin-left: 15%;
+    margin-top: 15vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-radius: 20px;
+    border: 5px solid #235353;
+    #signInCol{
+        padding: 2rem 4rem;
+        h1{
+            font-weight: 600;
+            font-size: 32px;
+            margin-bottom: 0.25rem;
+        }
+        p, input{
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        .inputEl{
+            appearance: none;
+            border: none;
+            outline: none;
+            width: 70%;
+            border: 2px solid #8E8E93;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        .inputEl:focus{
+            border: 2px solid #47bc95;
+        }
+        #signUpBtn{
+            background-color: #60BB58;
+            color: rgb(249, 255, 236);
+            border: 2px solid #235353;
+            font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        #signUpBtn:hover{
+            background-color: transparent;
+            color: #235353;
+            border: 2px solid #60BB58;
+        }
+    }
+    #imageCol{
+        background-image: url(../assets/icons/login_page_illustration.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+}

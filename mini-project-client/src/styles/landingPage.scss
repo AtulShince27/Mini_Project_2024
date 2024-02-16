@@ -2,7 +2,7 @@
 
 .landing-page{
     width: 100%;
-    height: 100vh;
+    height: 382vh;
     background-color: #F7F6F8;
     overflow: hidden;
 }
@@ -67,3 +67,106 @@
         }
     }
 }
+// Gradient for the last four pages
+.four-page-gradient{
+    height: 282vh;
+    width: 100%;
+    background: linear-gradient(#F7F6F8, #399893, #2a8685, #206D6C, #103b42);
+}
+// Second Page
+.second-page{
+    height: 76.8vh;
+    width: 100%;
+    #mobilePhone{
+        position: absolute;
+        margin-top: 11rem;
+        margin-left: 56%;
+    }
+    #chats{
+        position: absolute;
+        margin-left: 45%;
+        margin-top: 13.5rem;
+        
+    }
+    .content-container{
+        width: 85%;
+        height: 57%;
+        margin-left: 7.5%;
+        margin-top: 8rem;
+        background-color: #103b42;
+        border-radius: 24px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        overflow: hidden;
+        #textContentCol{
+            padding-top: 4rem;
+            padding-left: 4rem;
+            width: 80%;
+            color: #9eb986;
+            font-weight: 600;
+            font-size: 24px;
+        }
+        #circleDesign{
+            margin-left: 3rem;
+            width: 150%;
+        }
+    }
+}
+
+// Third Page
+.third-page{
+    width: 100%;
+    height: 68.1vh;
+    .content-container{
+        width: 85%;
+        height: 60%;
+        margin-left: 7.5%;
+        margin-top: 7rem;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        #pageThreeImg{
+            background-image: url(../assets/icons/desktop_chat.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 16px;
+        }
+        #textContentCol{
+            padding: 4rem 2rem 2rem 4rem;
+            color: #5ad362;
+            font-weight: 600;
+            font-size: 24px;
+        }
+    }
+}
+
+.fourth-page{
+    width: 100%;
+    height: 84.9vh;
+    .content-container{
+        width: 85%;
+        height: 60%;
+        margin-left: 7.5%;
+        margin-top: 7rem;
+        display: grid;
+        grid-template-columns: 60% 40%;
+        background-color: #89c29f;
+        #pageFourImg{
+            background-image: url(../assets/icons/notes.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 0px 16px 16px 0px;
+        }
+        #pageFourTextContent{
+            padding: 4rem;
+            color: #e5ffef;
+            font-weight: 600;
+            font-size: 24px;
+        }
+    }
+}
+
+.fifth-page{
+    width: 100%;
+    height: 52.2vh;
+}
+
