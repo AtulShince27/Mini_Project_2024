@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Mono', monospace;
+    color: black;
+}
+
+.login-page{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.main{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: 5px solid #235353;
+    border-radius: 15px;
+    height: 70vh;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 15vh;
+    padding-left: 4rem;
+}
+.content{
+    margin-top: 4rem;
+}
+.heading{
+    font-size : 32px;
+    font-weight: semibold;
+}
+.heading2{
+    font-size: 15px;
+}
+.login-form{
+    .inputDiv{
+        border: 1px solid  #8E8E93;
+        color: lightgrey;
+        margin-top: 2rem;
+        margin-top: 2rem;
+        padding:8px 16px;
+        width: 70%;
+        border-radius: 8px;
+    }
+    .intputDiv:focus{
+        border: 1px solid #55E5B4;
+    }
+    .inputDiv::placeholder{
+        color: #8E8E93;
+    }
+    .forgot{
+        width: 70%;
+        margin-top: 1rem;
+        color: #FF4448;
+        font-size: 16px;
+        text-align: right;
+
+    }
+    .buttons{
+        width: 70%;
+        margin-top: 2rem;
+        display: flex;
+    }
+    #loginBtn{
+        background-color: #55E5B4;
+        color: white;
+        padding: 8px 24px;
+        border-radius: 8px;
+        border: none;
+        margin-right: 1rem;
+    }
+    #signinBtn{
+        border: 2px solid #55E5B4;
+        padding: 8px 24px;
+        border-radius: 8px;
+    }
+
+
+
+}
+.image{
+   background-image: url(../assets/login_page_illustration.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
