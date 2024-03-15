@@ -9,6 +9,7 @@
 .login-page{
     width: 100%;
     height: 100vh;
+    background-color: #F8F0E2;
     overflow: hidden;
 }
 .main{
@@ -20,6 +21,7 @@
     width: 60%;
     margin-left: 20%;
     margin-top: 15vh;
+    background-color: white;
     padding-left: 4rem;
 }
 .content{
@@ -35,7 +37,6 @@
 .login-form{
     .inputDiv{
         border: 1px solid  #8E8E93;
-        color: lightgrey;
         margin-top: 2rem;
         margin-top: 2rem;
         padding:8px 16px;
@@ -45,16 +46,13 @@
     .intputDiv:focus{
         border: 1px solid #55E5B4;
     }
-    .inputDiv::placeholder{
-        color: #8E8E93;
-    }
     .forgot{
         width: 70%;
         margin-top: 1rem;
         color: #FF4448;
         font-size: 16px;
         text-align: right;
-
+        text-decoration: underline;
     }
     .buttons{
         width: 70%;
@@ -62,24 +60,42 @@
         display: flex;
     }
     #loginBtn{
-        background-color: #55E5B4;
+        background-color: #60BB58;
         color: white;
         padding: 8px 24px;
         border-radius: 8px;
         border: none;
         margin-right: 1rem;
+        border: 2px solid #235353;
+    }
+    #loginBtn:hover{
+        background-color: white;
+        color: #60BB58;
+        border: 2px solid #235353;
+    }
+    .error{
+        border: 2px solid red;
+    }
+    #errorMsg{
+        margin-bottom: 0;
+        font-style: italic;
+        font-size: 8px;
+        color: red;
+        margin-top: 1rem;
     }
     #signinBtn{
         border: 2px solid #55E5B4;
         padding: 8px 24px;
         border-radius: 8px;
     }
-
-
-
+    #signinBtn:hover{
+        background-color: #55E5B4;
+        color: white;
+        border: 2px solid #235353;
+    }
 }
 .image{
-   background-image: url(../assets/login_page_illustration.png);
+   background-image: url(../assets/icons/login_page_illustration.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

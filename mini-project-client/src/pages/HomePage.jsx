@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
+// import Navbar from '../components/Navbar'
 import List from '../components/List'
 import '../styles/home.scss'
 
@@ -8,6 +9,7 @@ import createGroupIcon from '../assets/icons/create_group_icon.png'
 const HomePage = () => {
   return (
     <div className='home-page'>
+      {/* The Sidebar contains information of the groups */}
       <Sidebar />
       <div className='home-container'>
         <div>
@@ -18,7 +20,6 @@ const HomePage = () => {
           <img alt='create-group' src={createGroupIcon} />
           Create Group
         </button>
-    
         <List />
       </div>
     </div>
