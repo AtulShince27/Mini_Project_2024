@@ -1,7 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/signInPage.scss';
-import { Navigate, useNavigate } from "react-router-dom";
-const SignInPage = () => {
+import { useNavigate } from "react-router-dom";
+import { loginCredentials } from '../test/registered_users';
+import { currentPage } from '../store/atoms/globalAtoms';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { isUserSignedIn } from '../store/atoms/globalAtoms';
+import { RecoilRoot } from 'recoil';
+
+
+const SignInPageContainer = () => {
   const navigate = useNavigate();
   // RegEX for Email 
   const emailRegex = /^(?:[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:\.[a-zA-Z0-9-])*|(?:[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:gmail|yahoo)\.com))$|^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@smit\.smu\.edu\.in)$/;
@@ -10,16 +17,24 @@ const SignInPage = () => {
   // States to check whether a valid Email ID and password are provided 
   const [invalidEmail, setErrorEmail] = useState(false);
   const [invalidPassword, setErrorPassword] = useState(false);
+  // Set the current page to sign in page
+  const [currPage, setCurrPage] = useRecoilState(currentPage);
+  const currUsersVal = loginCredentials;
+  // variables for inputs
+  let emailId = "", password = "", firstName = "", lastName = "", jobRole = "";
   // Function to handle the submission in front-end
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     // Prevents the default execution of form in Javascript
     event.preventDefault();
-    const emailAddr = document.getElementById('email');
-    const password = document.getElementById('password');
+    emailId = document.getElementById('email').value;
+    password = document.getElementById('password').value;
+    firstName = document.getElementById("firstName").value;
+    lastName = document.getElementById("lastName").value;
+    jobRole = document.getElementById("designation").value;
+    // test validity
+    const isValidPassword = passwordRegex.test(password);
+    const isValidEmail = emailRegex.test(emailId);
     
-    const isValidPassword = passwordRegex.test(password.value);
-    const isValidEmail = emailRegex.test(emailAddr.value);
-
     if(!isValidPassword){
       console.log("Invalid Password");
       // Invalid password hence the state is set to true
@@ -33,9 +48,35 @@ const SignInPage = () => {
     if(isValidPassword && isValidEmail){
       setErrorEmail(false);
       setErrorPassword(false);
+
+      const existingUser = currUsersVal.find((user) => user.emailId === emailId);
+      
+      if (existingUser) {
+        alert("This email address is already in use!");
+        return; // Indicate failure or error
+      }
+
+      const currUser = {
+        firstName,
+        lastName,
+        emailId,
+        password,
+        jobRole,
+      }
+
+      let stringifiedObj = JSON.stringify(currUser);
+      sessionStorage.setItem("currentUser", stringifiedObj);
+
+      alert(emailId+ " Successfully signed in!");
       navigate("/home");
-    }
-  }
+    } 
+  } 
+  
+  useEffect(()=>{
+    setCurrPage("signInPage");
+  }, [])
+  console.log(currPage);
+
   return (
     <div className='sign-in-page'>
       <div className="content-container">
@@ -48,7 +89,7 @@ const SignInPage = () => {
             <br></br>
             <input type="text" name='lastName' id='lastName' placeholder='Last Name' className='inputEl'/>
             <br />
-            <input type="email" name='email' className={!invalidEmail? "inputEl" : "inputEl error"} id='email' placeholder='Enter your E-Mail ID'/>
+            <input type="email" name='email' className={!invalidEmail? "inputEl" : "inputEl error"} id='email' placeholder='Enter E-Mail ID'/>
             {invalidEmail && <p id='errorMsg'>Invalid Email ID</p>}
             <br />
             <input type="password" name='password' id='password' placeholder='Password' className={!invalidPassword? "inputEl" : "inputEl error"}/>
@@ -83,6 +124,16 @@ const SignInPage = () => {
         </div>
       </div>
     </div>
+  )
+}
+
+const SignInPage = () => {
+  return (
+    <>
+      <RecoilRoot>
+        <SignInPageContainer></SignInPageContainer>
+      </RecoilRoot>
+    </>
   )
 }
 

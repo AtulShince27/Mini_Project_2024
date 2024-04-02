@@ -1,0 +1,32 @@
+.dropdown{
+    border: 2px solid rgb(0, 57, 36);
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 99;
+    position: absolute;
+    bottom: 0rem;
+    right: -11rem;
+    .dropdown-item{
+        display: flex;
+        border-bottom: 1px solid rgb(0, 57, 36);
+        padding: 0.5rem 1rem;
+        img{
+            height: 1.5rem;
+            margin-right: 0.5rem;
+        }
+    }
+    .no-border{
+        border: none;
+    }
+}
+.hide-drop-box{
+    display: none;
+}
+.show-drop-box{
+    display: block;
+}
+.dropdown-item:hover{
+    background-color: rgb(15, 94, 86);
+    color: white;
+}

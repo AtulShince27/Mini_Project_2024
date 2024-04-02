@@ -1,0 +1,46 @@
+.list{
+    border: 3px solid rgb(0, 57, 36);
+    margin-top: 0.75rem;
+    width: 50vw;
+    border-radius: 1rem;
+    .list-Item{
+        display: flex;
+        color: black;
+        width: 100%;
+        border-bottom: 1px solid rgb(0, 57, 36);
+        align-items: center;
+        padding: 1rem 3rem;
+        position: relative;
+        img{
+            height: 2rem;
+            margin-right: 1rem;
+        }
+        .options{
+            position: absolute;
+            right: 3rem;
+        }
+    }
+    .list-Item:hover{
+        color: white;
+        background-color: rgb(15, 94, 86);
+    }
+    .list-Item:first-child:hover{
+        color: white;
+        background-color: rgb(15, 94, 86);
+        border-radius: 1rem 1rem 0rem 0rem;
+    }
+    .list-Item:last-child:hover{
+        color: white;
+        background-color: rgb(15, 94, 86);
+        border-radius: 0rem 0rem 1rem 1rem;
+    }
+    .top{
+        border-top-left-radius: 0.8rem;
+        border-top-right-radius: 0.8rem;
+    }
+    .no-border{
+        border: none;
+        border-bottom-left-radius: 0.8rem;
+        border-bottom-right-radius: 0.8rem;
+    }
+}

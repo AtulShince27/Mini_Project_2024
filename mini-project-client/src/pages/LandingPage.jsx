@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../styles/landingPage.scss";
 import botImg from "../assets/icons/landing_page_bot.png"
 import textBubbleImg1 from "../assets/icons/Text_Bubble1.png";
@@ -10,10 +10,20 @@ import chatsImg from "../assets/icons/chats.png";
 import circleDesignEl from "../assets/icons/Circle_Design_El.png";
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
+import { currentPage } from '../store/atoms/globalAtoms';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { RecoilRoot } from 'recoil';
 
-const LandingPage = () => {
+const LandingPageContainer = () => {
   const navigate = useNavigate();
+  // Set the current page to landing page
+  // const setCurrPage = useSetRecoilState(currentPage);
+  const [currPage, setCurrPage] = useRecoilState(currentPage);
+  useEffect(()=>{
+    setCurrPage("landingPage");
+  }, []);
 
+  console.log(currPage);
   const handleFormSubmit = (ev)=>{
     ev.preventDefault();
   }
@@ -159,6 +169,7 @@ const LandingPage = () => {
           <div className='second-page'>
             <AnimatePresence mode='popLayout'>
               <motion.img 
+                key={1}
                 src={mobilePhoneImg} 
                 alt="Mobile Phone Image" 
                 id='mobilePhone'
@@ -181,6 +192,7 @@ const LandingPage = () => {
                 }}
               />
               <motion.img 
+                key={2}
                 src={chatsImg} 
                 alt="Chats Image" 
                 id='chats'
@@ -315,6 +327,16 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+    </>
+  )
+}
+
+const LandingPage = () => {
+  return (
+    <>
+      <RecoilRoot>
+        <LandingPageContainer></LandingPageContainer>
+      </RecoilRoot>
     </>
   )
 }

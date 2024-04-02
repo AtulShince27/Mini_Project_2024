@@ -1,0 +1,40 @@
+.container{
+    .users-page{
+        display: grid;
+        grid-template-columns: 15% 85%;
+        z-index: 0;
+        .user-list-col{
+            margin-left: 6rem;
+            display: grid;
+            grid-template-rows: 15% 15% 70%;
+            .text-row{
+                .page-title{
+                    font-size: 2.5rem;
+                    font-weight: 500;
+                    margin-top: 1.5rem;
+                }
+            }
+            .button-row{
+                width: 50vw;
+                display: grid;
+                grid-template-columns: auto auto auto;
+                font-size: 16px;
+                margin-bottom: 0;
+                button{
+                    display: flex;
+                    text-align: center;
+                    width: 80%;
+                    padding: 8px 12px;
+                    text-align: center;
+                    margin-top: 2rem;
+                    img{
+                        margin-right: 1rem;
+                    }
+                    p{
+                        padding-top: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
