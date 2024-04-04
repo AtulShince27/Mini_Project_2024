@@ -4,15 +4,18 @@ import Navbar from '../components/Navbar'
 import List from '../components/List'
 import Modal from '../components/Modal';
 import '../styles/home.scss'
-import { currentPage } from '../store/atoms/globalAtoms';
+import { currentPage, isListModalVisibleDelete } from '../store/atoms/globalAtoms';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { isUserSignedIn } from '../store/atoms/globalAtoms';
 import { RecoilRoot } from 'recoil';
-
-
+import { isModalVisible } from '../store/atoms/globalAtoms';
+import { isListModalVisibleEdit } from '../store/atoms/globalAtoms';
 import createGroupIcon from '../assets/icons/create_group_icon.png'
 
 const HomePageContainer = () => {
+  const [modalVisibility, setModalVisibility] = useRecoilState(isModalVisible);
+  const listModalVibilityEdit = useRecoilValue(isListModalVisibleEdit);
+  const listModalVibilityDelete = useRecoilValue(isListModalVisibleDelete);
   const [isVisible, setVisibility] = useState(false);
   // Set the current page to home page
   const [isSignedIn, setSignedIn] = useRecoilState(isUserSignedIn);
@@ -31,22 +34,39 @@ const HomePageContainer = () => {
     signedInVal = true;
   }
   const [currPage, setCurrPage] = useRecoilState(currentPage);
-  useEffect(()=>{
-      setCurrPage("homePage");
-      setSignedIn(signedInVal);
-  }, []);
-  console.log(currPage);
-  console.log("signIn: " + isSignedIn);
+
   // A callback for Create Group Modal
   const createGroupModal = () => {
     console.log("function called successfully")
     setVisibility(true);
     console.log(isVisible)
   }
+
+  useEffect(()=>{
+      setCurrPage("homePage");
+      setSignedIn(signedInVal);
+      if(isVisible === true){
+        setModalVisibility(true);
+      } 
+      if(modalVisibility === false){
+        setVisibility(false);
+      }
+  }, [isVisible]);
+  console.log(currPage);
+  console.log("signIn: " + isSignedIn);
+  console.log("modal: "+ modalVisibility);
+  console.log("Edit Modal: " + listModalVibilityEdit);
+  console.log("Delete: " + listModalVibilityDelete);
   return (
     <div className='container'>
-      {isVisible === true && (
+      {modalVisibility === true && (
         <Modal type="CreateGroup"></Modal>
+      )}
+      {listModalVibilityEdit === true && (
+        <Modal type="EditGroup"></Modal>
+      )}
+      {listModalVibilityDelete === true && (
+        <Modal type="DeleteGroup"></Modal>
       )}
       <Navbar></Navbar>
         <div className='home-page'>

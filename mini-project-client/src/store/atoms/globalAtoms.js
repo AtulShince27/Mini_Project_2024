@@ -48,6 +48,33 @@ export const currentGroup = atom({
     default: "",
 })
 
+export const isModalVisible = atom({
+    key: "isModalVisibleAtom",
+    default: false,
+})
+
+export const isListModalVisibleEdit = atom({
+    key: "isListModalVisibleEditAtom",
+    default: false,
+})
+
+export const isListModalVisibleDelete = atom({
+    key: "isListModalVisibleDeleteAtom",
+    default: false,
+})
+
+export const isModalVisibleMember = atom({
+    key: "isModalVisibleMemAtom",
+    default: false,
+})
+export const isModalVisibleNotes = atom({
+    key: "isModalVisibleNotesAtom",
+    default: false,
+})
+export const isModalVisibleNotices = atom({
+    key: "isModalVisibleNoticesAtom",
+    default: false,
+})
 
 export const userGroupList = atom({
     key: "userGroupListAtom",

@@ -9,23 +9,28 @@ import addMemberIcon from "../assets/icons/add_user_icon.png";
 import uploadNotesIcon from "../assets/icons/upload_notes_icon.png";
 import uploadNoticesIcon from "../assets/icons/notices_icon.png"
 import { currentPage } from '../store/atoms/globalAtoms';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { isModalVisibleMember } from '../store/atoms/globalAtoms';
+import { isModalVisibleNotices } from '../store/atoms/globalAtoms';
+import { isModalVisibleNotes } from '../store/atoms/globalAtoms';
+import { isModalVisible } from '../store/atoms/globalAtoms';
+import { isListModalVisibleDelete, isListModalVisibleEdit } from '../store/atoms/globalAtoms';
 import { RecoilRoot } from 'recoil';
 
 const UserGroupsContainer = () => {
+  // modal visibility atom 
+  const [modalVisibilityMember, setModalVisibilityMember] = useRecoilState(isModalVisibleMember);
+  const [modalVisibilityNotes, setModalVisibilityNotes] = useRecoilState(isModalVisibleNotes);
+  const [modalVisibilityNotices, setModalVisibilityNotices] = useRecoilState(isModalVisibleNotices);
   const [isVisibleMember, setVisibilityMember] = useState(false);
   const [isVisibleNotes, setVisibilityNotes] = useState(false);
   const [isVisibleNotices, setVisibilityNotices] = useState(false);
-
+  const listModalVibilityEdit = useRecoilValue(isListModalVisibleEdit);
+  const listModalVibilityDelete = useRecoilValue(isListModalVisibleDelete);
+  
   // Set the current page to sign in page
   // const setCurrPage = useSetRecoilState(currentPage);
   const [currPage, setCurrPage] = useRecoilState(currentPage);
-  useEffect(()=>{
-      setCurrPage("usersGroupPage");
-  }, []);
-  console.log(currPage);
-  let currPageValue = currPage;
-  console.log(currPageValue); 
   // Add member function
   const addMemberModal = ()=>{
     console.log("function called successfully")
@@ -44,17 +49,41 @@ const UserGroupsContainer = () => {
     setVisibilityNotes(true);
     console.log(isVisibleNotices)
   }
+  useEffect(()=>{
+      setCurrPage("usersGroupPage");
+      if(isVisibleMember === true){
+        setModalVisibilityMember(true);
+      } else if(isVisibleNotes === true){
+        setModalVisibilityNotes(true);
+      } else if(isVisibleNotices === true){
+        setModalVisibilityNotices(true);
+      }
+      if(modalVisibilityMember === false || 
+        modalVisibilityNotes === false ||
+        modalVisibilityNotices === false){
+        setVisibilityMember(false);
+        setVisibilityNotes(false);
+        setVisibilityNotices(false);
+      }
+  }, [isVisibleMember, isVisibleNotes, isVisibleNotices]);
+  console.log(currPage);
   return (
     <div className='container'>
       <Navbar></Navbar>
-      {isVisibleMember === true && (
+      {modalVisibilityMember === true && (
         <Modal type="AddMember"></Modal>
       )}
-      {isVisibleNotes === true && (
+      {modalVisibilityNotes === true && (
         <Modal type="UploadNotes"></Modal>
       )}
-      {isVisibleNotices === true && (
+      {modalVisibilityNotices === true && (
         <Modal type="UploadNotice"></Modal>
+      )}
+      {listModalVibilityEdit === true && (
+        <Modal type="EditMember"></Modal>
+      )}
+      {listModalVibilityDelete === true && (
+        <Modal type="RemoveMember"></Modal>
       )}
       <div className="users-page">
         <div className="sidebar-col">
