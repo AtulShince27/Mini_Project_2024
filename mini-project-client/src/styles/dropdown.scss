@@ -16,6 +16,9 @@
             margin-right: 0.5rem;
         }
     }
+    .dropdown-item:last-child{
+        border-radius: 0px;
+    }
     .no-border{
         border: none;
     }

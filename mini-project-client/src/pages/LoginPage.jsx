@@ -9,12 +9,12 @@ import { RecoilRoot } from 'recoil';
 
 const LoginPageContainer = () => {
   const navigate = useNavigate();
-  // RegEX for Email 
-  const emailRegex = /^(?:[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:\.[a-zA-Z0-9-])*|(?:[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:gmail|yahoo)\.com))$|^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@smit\.smu\.edu\.in)$/;
+  // RegEX for phone 
+  const phoneRegex = /^(0|\+91)?[6789]\d{9}$/;
   // RegEx for Password
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-  // States to check whether the valid Email ID and password are input
-  const [invalidEmail, setErrorEmail] = useState(false);
+  // States to check whether the valid phone ID and password are input
+  const [invalidPhone, setErrorPhone] = useState(false);
   const [invalidPassword, setErrorPassword] = useState(false);
   // Set the current page to log in page
   // const setCurrPage = useSetRecoilState(currentPage);
@@ -24,15 +24,15 @@ const LoginPageContainer = () => {
   }, []);
   console.log(currPage);
   // Verifies whether the user already exists or not
-  const checkUserExistence = (emailId, password) => {
+  const checkUserExistence = (phoneNum, password) => {
     const userDetails = {
-      emailId,
+      phoneNum,
       password,
     }
 
     const idx = loginCredentials.findIndex((user) => {
       console.log(user);
-      return user.emailId === userDetails.emailId && user.password === userDetails.password;
+      return user.phoneNum === userDetails.phoneNum && user.password === userDetails.password;
     })
 
     if(idx === -1){
@@ -48,27 +48,27 @@ const LoginPageContainer = () => {
   const handleFormSubmit = (event) => {
     // Prevents the default execution of form in Javascript
     event.preventDefault();
-    const emailAddr = document.getElementById('email');
+    const phoneNum = document.getElementById('phoneNum');
     const password = document.getElementById('password');
     
     const isValidPassword = passwordRegex.test(password.value);
-    const isValidEmail = emailRegex.test(emailAddr.value);
+    const isValidPhone = phoneRegex.test(phoneNum.value);
 
     if(!isValidPassword){
       console.log("Invalid Password");
       // Invalid password hence the state is set to true
       setErrorPassword(true);
     }
-    if(!isValidEmail){
-      console.log("Invalid Email ID");
-      // Invalid Email ID hence the state is set to true
-      setErrorEmail(true);
+    if(!isValidPhone){
+      console.log("Invalid Phone Number");
+      // Invalid Phone Number hence the state is set to true
+      setErrorPhone(true);
     }
-    if(isValidPassword && isValidEmail){
-      setErrorEmail(false);
+    if(isValidPassword && isValidPhone){
+      setErrorPhone(false);
       setErrorPassword(false);
-      if(checkUserExistence(emailAddr.value, password.value)){
-        alert("Successfully logged in as: " + emailAddr.value);
+      if(checkUserExistence(phoneNum.value, password.value)){
+        alert("Successfully logged in as: " + phoneNum.value);
         navigate("/home");
       } else {
         alert("Incorrect Email ID or Password. Try Again!");
@@ -88,9 +88,9 @@ const LoginPageContainer = () => {
             <form className='login-form' onSubmit={handleFormSubmit}>
               {/* Login Form that takes input EMail and Password */}
               <div>
-                <input type="email" id="email" name="email" className={!invalidEmail ?"inputDiv": "inputDiv error"} placeholder='Enter Email ID'/>
+                <input type="text" id="phoneNum" name="phoneNum" className={!invalidPhone ?"inputDiv": "inputDiv error"} placeholder='Enter Phone Number'/>
                 {/* If an Email of Invalid Format is entered it shows this Error Message */}
-                {invalidEmail && <p id='errorMsg'>Invalid Email ID</p>}
+                {invalidPhone && <p id='errorMsg'>Invalid Phone Number</p>}
               </div>
               <div>
                 <input type="password" id="password" name="password" className={!invalidPassword ?'inputDiv': 'inputDiv error'} placeholder='Password'/>

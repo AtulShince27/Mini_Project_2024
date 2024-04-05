@@ -1,7 +1,7 @@
 // Sample list of items
 export const users = [
     {
-        user:"atulk.shince@gmail.com",
+        user:"7337472945",
         group: "CSE Section-A (2021-2025)",
         group_members: [
             { id: 1, name: "Atul Shince" },
@@ -12,7 +12,7 @@ export const users = [
         ]
     },
     {
-        user:"noelk.shince@gmail.com",
+        user:"7013268643",
         group: "CTMA Physics (2023-2027)",
         group_members: [
             { id: 1, name: "Noel Shince" },

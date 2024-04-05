@@ -32,8 +32,8 @@ function List() {
         storageObj = null;
         console.log("Not Signed In!")
     }
-    console.log(storageObj.emailId);
-    const emailId = storageObj.emailId;
+    console.log(storageObj.phoneNum);
+    const phoneNum = storageObj.phoneNum;
     // Retrieving the data from DB
     let currIdx = -1;
     if(itemList){
@@ -41,12 +41,12 @@ function List() {
         console.log(len);
         for (let i = 0; i < len; i++) {
             console.log(itemList[i].user);
-            if(itemList[i].user === emailId){
+            if(itemList[i].user === phoneNum){
                 currIdx = i;
                 break;
             }
         }
-        console.log(currIdx);
+        console.log("Idx: "+currIdx);
         let groups_list;
         if(currIdx != -1 && currPage === "homePage"){
             groups_list = itemList[currIdx].group;
@@ -73,7 +73,7 @@ function List() {
     // console.log(activeGroupId);
     return (
         <div className='list'>
-            {currPage === "homePage" && itemList[currIdx].group.map(item => (
+            {idx != -1 && currPage === "homePage" && itemList[currIdx]?.group.map(item => (
                 <div className='list-Item' key={item.id}>
                     <img alt='group-icon' src={groupIcon} />
                     {item.name}
@@ -81,7 +81,7 @@ function List() {
                     <div id={"drop-" + item.id} className={activeId === item.id? "show-drop-box drop-box" : "hide-drop-box drop-box"}><DropDown/></div>
                     </div>
             ))}
-            {currPage === "usersGroupPage" && itemList[currIdx].group_members.map(item => (
+            {idx != -1 && currPage === "usersGroupPage" && itemList[currIdx]?.group_members.map(item => (
                 <div className='list-Item' key={item.id}>
                     <img alt='group-icon' src={groupIcon} />
                     {item.name}

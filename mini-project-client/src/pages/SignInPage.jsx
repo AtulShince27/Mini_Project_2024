@@ -11,55 +11,55 @@ import { RecoilRoot } from 'recoil';
 const SignInPageContainer = () => {
   const navigate = useNavigate();
   // RegEX for Email 
-  const emailRegex = /^(?:[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:\.[a-zA-Z0-9-])*|(?:[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:gmail|yahoo)\.com))$|^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@smit\.smu\.edu\.in)$/;
+  const phoneRegex = /^(0|\+91)?[6789]\d{9}$/;
   // RegEX for Password 
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-  // States to check whether a valid Email ID and password are provided 
-  const [invalidEmail, setErrorEmail] = useState(false);
+  // States to check whether a valid Phone number and password are provided 
+  const [invalidPhone, setErrorPhone] = useState(false);
   const [invalidPassword, setErrorPassword] = useState(false);
   // Set the current page to sign in page
   const [currPage, setCurrPage] = useRecoilState(currentPage);
   const currUsersVal = loginCredentials;
   // variables for inputs
-  let emailId = "", password = "", firstName = "", lastName = "", jobRole = "";
+  let phoneNum = "", password = "", fullName = "", regdNo = "", jobRole = "";
   // Function to handle the submission in front-end
   const handleFormSubmit = async (event) => {
     // Prevents the default execution of form in Javascript
     event.preventDefault();
-    emailId = document.getElementById('email').value;
+    phoneNum = document.getElementById('phoneNum').value;
     password = document.getElementById('password').value;
-    firstName = document.getElementById("firstName").value;
-    lastName = document.getElementById("lastName").value;
+    fullName = document.getElementById("fullName").value;
+    regdNo = document.getElementById("regdNo").value;
     jobRole = document.getElementById("designation").value;
     // test validity
     const isValidPassword = passwordRegex.test(password);
-    const isValidEmail = emailRegex.test(emailId);
+    const isValidPhone = phoneRegex.test(phoneNum);
     
     if(!isValidPassword){
       console.log("Invalid Password");
       // Invalid password hence the state is set to true
       setErrorPassword(true);
     }
-    if(!isValidEmail){
-      console.log("Invalid Email ID");
-      // Invalid Email ID hence the state is set to true
-      setErrorEmail(true);
+    if(!isValidPhone){
+      console.log("Invalid Phone Number");
+      // Invalid Phone number hence the state is set to true
+      setErrorPhone(true);
     }
-    if(isValidPassword && isValidEmail){
-      setErrorEmail(false);
+    if(isValidPassword && isValidPhone){
+      setErrorPhone(false);
       setErrorPassword(false);
 
-      const existingUser = currUsersVal.find((user) => user.emailId === emailId);
+      const existingUser = currUsersVal.find((user) => user.phoneNum === phoneNum);
       
       if (existingUser) {
-        alert("This email address is already in use!");
+        alert("This phone number is already in use!");
         return; // Indicate failure or error
       }
 
       const currUser = {
-        firstName,
-        lastName,
-        emailId,
+        fullName,
+        regdNo,
+        phoneNum,
         password,
         jobRole,
       }
@@ -67,7 +67,7 @@ const SignInPageContainer = () => {
       let stringifiedObj = JSON.stringify(currUser);
       sessionStorage.setItem("currentUser", stringifiedObj);
 
-      alert(emailId+ " Successfully signed in!");
+      alert(phoneNum+ " Successfully signed in!");
       navigate("/home");
     } 
   } 
@@ -85,12 +85,12 @@ const SignInPageContainer = () => {
           <p>Please enter your details</p>
           <form onSubmit={handleFormSubmit}>
             {/* Form for the SignIn Page that takes the First and Last Name of the user, designation , EMail ID and Password */}
-            <input type="text" name='firstName' id='firstName' placeholder='First Name' className='inputEl'/>
+            <input type="text" name='fullName' id='fullName' placeholder='Full Name' className='inputEl'/>
             <br></br>
-            <input type="text" name='lastName' id='lastName' placeholder='Last Name' className='inputEl'/>
+            <input type="text" name='regdNo' id='regdNo' placeholder='Registration Number' className='inputEl'/>
             <br />
-            <input type="email" name='email' className={!invalidEmail? "inputEl" : "inputEl error"} id='email' placeholder='Enter E-Mail ID'/>
-            {invalidEmail && <p id='errorMsg'>Invalid Email ID</p>}
+            <input type="text" name='phoneNum' className={!invalidPhone? "inputEl" : "inputEl error"} id='phoneNum' placeholder='Enter Phone Number'/>
+            {invalidPhone && <p id='errorMsg'>Invalid Phone Number</p>}
             <br />
             <input type="password" name='password' id='password' placeholder='Password' className={!invalidPassword? "inputEl" : "inputEl error"}/>
             {invalidPassword && <p id='errorMsg'>Invalid Password. Must contain atleast 1 uppercase, 1 lowercase , 1 number and 1 special character</p>}
